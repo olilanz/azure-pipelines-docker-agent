@@ -22,6 +22,10 @@ docker run -e AZP_URL=<Azure DevOps instance> -e AZP_TOKEN=<PAT token> -e AZP_AG
 
 ## Docker in Docker
 
-For supporting build jobs that require access to a Docker Engine, you will need to mount the Docker socket into the container, and run the container in privileged mode. This will give the build agent full access to Dcoker Engine. 
+For supporting build jobs that require access to a Docker Engine, you will need to mount the Docker socket into the container, and run the container in privileged mode. This will give the build agent full access to Docker Engine. 
 
-Not that this elevates the agent to run as root, which may have severe security implications. Do this only in environments and configurations you trust.
+```
+docker run -e AZP_URL=<Azure DevOps instance> -e AZP_TOKEN=<PAT token> -e AZP_AGENT_NAME=mydockeragent -v /var/run/docker.sock:/var/run/docker.sock --privileged dockeragent:latest --once
+```
+
+Note that this elevates the agent to run as root, which may have severe security implications. Do this only in environments and configurations you trust.
