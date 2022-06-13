@@ -19,3 +19,9 @@ docker run -e AZP_URL=<Azure DevOps instance> -e AZP_TOKEN=<PAT token> -e AZP_AG
 - AZP_AGENT_NAME:	Agent name (default value: the container hostname).
 - AZP_POOL:	Agent pool name (default value: Default).
 - AZP_WORK:	Work directory (default value: _work).
+
+## Docker in Docker
+
+For supporting build jobs that require access to a Docker Engine, you will need to mount the Docker socket into the container, and run the container in privileged mode. This will give the build agent full access to Dcoker Engine. 
+
+Not that this elevates the agent to run as root, which may have severe security implications. Do this only in environments and configurations you trust.
