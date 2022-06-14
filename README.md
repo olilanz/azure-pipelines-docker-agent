@@ -7,9 +7,16 @@ Based on Microsoft docs: https://docs.microsoft.com/en-us/azure/devops/pipelines
 
 ## Build and run
 
+The image is hosted on Docker Hub: https://hub.docker.com/repository/docker/olilanz/azure-pipelines-docker-agent
+
 ```
-docker build -t dockeragent:latest .
-docker run -e AZP_URL=<Azure DevOps instance> -e AZP_TOKEN=<PAT token> -e AZP_AGENT_NAME=mydockeragent dockeragent:latest --once
+docker run -e AZP_URL=<Azure DevOps instance> -e AZP_TOKEN=<PAT token> -e AZP_AGENT_NAME=mydockeragent olilanz/azure-pipelines-docker-agent:latest --once
+```
+
+Build the image using the docker build command:
+
+```
+docker build -t olilanz/azure-pipelines-docker-agent:latest .
 ```
 
 ## Environment variables
